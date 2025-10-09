@@ -1,6 +1,6 @@
-# 要求上下游引物同时match
+# Require both upstream and downstream primers to match
 
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 
 import argparse
 from Bio import SeqIO
@@ -76,21 +76,21 @@ def visualize_alignment(sequence, primer, position, is_start=True):
     if not is_start and position == len(sequence) + 1:
         return f"Primer: {primer}\nSeq:    (Assumed to be after the sequence end)"
 
-    # 计算显示区域的起始和结束位置
-    start = max(0, position - 1 - 5)  # 上游额外5个碱基
-    end = min(len(sequence), position - 1 + len(primer) + 5)  # 下游额外5个碱基
+    # Calculate the start and end positions of the display region
+    start = max(0, position - 1 - 5)  # Additional 5 bases upstream
+    end = min(len(sequence), position - 1 + len(primer) + 5)  # Additional 5 bases downstream
 
-    # 提取完整的显示序列
+    # Extract the complete display sequence
     full_seq_segment = sequence[start:end]
 
-    # 计算引物对齐位置的偏移量
+    # Calculate the offset for primer alignment position
     offset = position - 1 - start
 
-    # 构建显示行
+    # Build display lines
     seq_display = full_seq_segment
-    match_line = ' ' * offset  # 对齐前的空格
+    match_line = ' ' * offset  # Spaces before alignment
 
-    # 计算匹配情况
+    # Calculate match status
     mismatches = 0
     for i, (p, s) in enumerate(zip(primer, sequence[position - 1:position - 1 + len(primer)])):
         if is_match(p, s):
@@ -99,16 +99,16 @@ def visualize_alignment(sequence, primer, position, is_start=True):
             match_line += ' '
             mismatches += 1
 
-    # 补充对齐后的空格
+    # Add spaces after alignment
     match_line += ' ' * (len(full_seq_segment) - len(match_line))
 
-    # 构建引物显示行
+    # Build primer display line
     primer_line = ' ' * offset + primer + ' ' * (len(full_seq_segment) - len(primer) - offset)
 
-    # 添加位置标记
+    # Add position marker
     position_info = f"Position: {position}"
 
-    # 构建返回结果
+    # Build return result
     result = (
         f"{position_info}\n"
         f"Sequence:  {seq_display}\n"
@@ -125,7 +125,7 @@ def extract_sequence(record, forward_primers, reverse_primers, forward_mismatche
     rev_comp_sequence = str(record.seq.reverse_complement())
 
     def process_single_sequence(seq, is_original=True):
-        # 查找所有正向引物和反向引物的匹配位置
+        # Find all matching positions for forward and reverse primers
         forward_matches = []
         for i, primer in enumerate(forward_primers):
             positions, score = find_all_best_matches(seq, primer, forward_mismatches)
@@ -140,10 +140,10 @@ def extract_sequence(record, forward_primers, reverse_primers, forward_mismatche
                 reverse_matches.append((pos + 1, i, score))
         reverse_matches.sort()
 
-        # 生成所有可能的扩增产物
+        # Generate all possible amplicons
         amplicons = set()
 
-        # 修改：只有当同时找到正向和反向引物时，才视为会产生扩增产物
+        # Modified: Only when both forward and reverse primers are found, an amplicon is considered to be generated
         if forward_matches and reverse_matches:
             for f_pos, f_index, f_score in forward_matches:
                 for r_pos, r_index, r_score in reverse_matches:
@@ -159,18 +159,18 @@ def extract_sequence(record, forward_primers, reverse_primers, forward_mismatche
             f_primer = forward_primers[f_index]
             r_primer = reverse_primers[r_index]
 
-            # 添加序列标识符和边界信息
+            # Add sequence identifier and boundary information
             alignment_results.append(f"\n{'=' * 60}\n")
             alignment_results.append(
                 f"Sequence: {record.id}_{'rev_comp_' if not is_original else ''}amplicon_{i + 1}\n")
             alignment_results.append(f"Sequence length: {len(seq)}\n")
 
-            # 添加正向引物对齐结果
+            # Add forward primer alignment results
             alignment_results.append("\nForward primer alignment:\n")
             f_alignment = visualize_alignment(seq, f_primer, start)
             alignment_results.append(f"{f_alignment}\n")
 
-            # 添加反向引物对齐结果
+            # Add reverse primer alignment results
             alignment_results.append("\nReverse primer alignment:\n")
             r_alignment = visualize_alignment(seq, r_primer, end - len(r_primer))
             alignment_results.append(f"{r_alignment}\n")
