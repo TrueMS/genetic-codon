@@ -49,12 +49,12 @@ python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
 
 ## AlnView.py
 
-python /path/to/AlnView.py -i ./Ostar.Pro.mafft -diff -n 90
+python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
 
   · Visualize the aligned sequences.
   
 ## Pro2ASV2Seq.py
 
-python /path/to/Pro2ASV2Seq.py -table ./ASV.mcr.pro.table.DNA.with_sequences.txt -seq ./DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt
+python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt
 
   · Translate DNA sequences to protein and count DNA variants for each protein
