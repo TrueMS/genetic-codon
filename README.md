@@ -7,11 +7,11 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
   * Quality control
     
-  `python /data/cailab/script.sh/batch_sickle.py -i 0.data`
+`python /data/cailab/script.sh/batch_sickle.py -i 0.data`
 
  * Coverting FastQ to Fasta
    
-  `mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
+`mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
 
 `python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle`
  
@@ -27,13 +27,13 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 ## Protable.py
 
 * Merge identical protein sequences and sum their counts
-
+  
 `python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt`
 
 ## PCR.py 
 
  * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
-
+   
 `python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15`
  
 ## Coding.py
