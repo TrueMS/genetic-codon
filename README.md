@@ -50,12 +50,13 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 ## AlnView.py
 
-python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
+* Visualize the aligned sequences.
 
-  · Visualize the aligned sequences.
-  
+`python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90`
+
 ## Pro2ASV2Seq.py
 
-python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt
+ * Translate DNA sequences to protein and count DNA variants for each protein
 
-  · Translate DNA sequences to protein and count DNA variants for each protein
+`python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt`
+
