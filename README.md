@@ -11,11 +11,7 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
  * Coverting FastQ to Fasta
    
-`mkdir 1.sickle && mv 0.data/*sickle 1.sickle
-
-python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle
-
-cp 1.sickle/*fasta 2.fasta/`
+`mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
 
 `python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle`
  
@@ -23,9 +19,10 @@ cp 1.sickle/*fasta 2.fasta/`
 
 ## mcrASVtable.py 
 
-python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3
+* Batch processing of fasta files for sequence dereplication and denoising, generating ASV table and unchim
 
-  · Batch processing of fasta files for sequence dereplication and denoising, generating ASV table and unchim
+`python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3`
+
 
 ## Protable.py
 
