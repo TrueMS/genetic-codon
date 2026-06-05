@@ -5,17 +5,15 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 ## Perform quality control on the raw amplicons (single-end sequencing) and convert the FASTQ format to FASTA format.
 
+  * Quality control
 `python /data/cailab/script.sh/batch_sickle.py -i 0.data`
 
-  * Quality control
-  
-mkdir 1.sickle && mv 0.data/*sickle 1.sickle
+ * Coverting FastQ to Fasta
+`mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
 
-python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle
-
-  · Coverting FastQ to Fasta
-  
-cp 1.sickle/*fasta 2.fasta/
+`python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle`
+ 
+`cp 1.sickle/*fasta 2.fasta/`
 
 ## mcrASVtable.py 
 
