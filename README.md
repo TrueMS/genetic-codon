@@ -7,11 +7,11 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
   * Quality control
     
-`python /data/cailab/script.sh/batch_sickle.py -i 0.data`
+  `python /data/cailab/script.sh/batch_sickle.py -i 0.data`
 
  * Coverting FastQ to Fasta
    
-`mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
+  `mkdir 1.sickle && mv 0.data/*sickle 1.sickle`
 
 `python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle`
  
