@@ -33,7 +33,7 @@ python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 
 ├── nonchimeras.SampleA.fa      # Sample A: denoised & chimera-filtered per-sample ASV sequences (main output)
 ├── nonchimeras.SampleB.fa      # Sample B: same as above
 ├── ASV.seq.fa                  # [Core Result 1] Consolidated representative FASTA of all ASVs across samples
-├── ASV.table.txt               # [Core Result 2] ASV-by-sample abundance matrix (tab-delimited, directly importable into R/QIIME2)
+├── ASV.table.txt               # [Core Result 2] ASV-by-sample abundance matrix (tab-delimited)
 ├── chimera_detection_summary.txt # [Only generated with --keep-temp] Global chimera statistics summary across all samples
 └── temp/                       # [Only generated with --keep-temp] Intermediate working directory, separated by individual sample subfolders
     ├── SampleA/
