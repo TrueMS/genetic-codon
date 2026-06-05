@@ -26,27 +26,27 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 ## Protable.py
 
-python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt
+* Merge identical protein sequences and sum their counts
 
-  · Merge identical protein sequences and sum their counts
+`python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt`
 
 ## PCR.py 
 
-python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15
+ * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
 
-  · Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa.
-  
+`python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15`
+ 
 ## Coding.py
 
-python /path/to/Coding.py -i dereplicated.mcr.pro.DRNA.mafft -o coding.stats
-
-  · Calculate character frequency at each position in aligned sequences
+  * Calculate character frequency at each position in aligned sequences
+    
+`python /path/to/Coding.py -i dereplicated.mcr.pro.DRNA.mafft -o coding.stats`
 
 ## stop_codon_usage.py
 
-python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
-
-  · Calculate the usage frequency of each stop codon in the sequences.
+* Calculate the usage frequency of each stop codon in the sequences
+  
+`python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA`
 
 ## AlnView.py
 
