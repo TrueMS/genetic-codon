@@ -17,10 +17,8 @@ def filter_file(input_file, e_value, n_hits):
         base_name = os.path.splitext(os.path.basename(input_file))[0]
         output_file = f"{base_name}_{e_value:.0e}_top{n_hits}.out"
 
-        # 使用字典存储每个基因的hits
         gene_hits = defaultdict(list)
 
-        # 首先读取并处理所有符合E-value阈值的行
         with open(input_file, 'r') as infile:
             for line in infile:
                 processed_line = process_line(line)
@@ -31,19 +29,14 @@ def filter_file(input_file, e_value, n_hits):
                         gene_id = fields[0]
                         fifth_column = float(fields[4])
                         if fifth_column <= e_value:
-                            # 将符合条件的行添加到对应基因的列表中
                             gene_hits[gene_id].append((fifth_column, processed_line))
                     except ValueError:
                         continue
 
-        # 写入输出文件
         with open(output_file, 'w') as outfile:
             for gene_id in gene_hits:
-                # 按E-value排序（升序）
                 sorted_hits = sorted(gene_hits[gene_id], key=lambda x: x[0])
-                # 只取前n_hits个结果
                 top_hits = sorted_hits[:n_hits]
-                # 写入文件
                 for _, line in top_hits:
                     outfile.write(line)
 
