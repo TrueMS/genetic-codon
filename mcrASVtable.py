@@ -290,7 +290,7 @@ def main():
     parser.add_argument('-i', '--input', required=True, help='Input folder path')
     parser.add_argument('-o', '--output', required=True, help='Output folder path')
     parser.add_argument('-t', '--threads', type=int, default=20, help='Number of threads (default: 20)')
-    parser.add_argument('-m', '--minsize', type=int, default=8, help='Minimum abundance for UNOISE clustering (default: 8)')
+    parser.add_argument('-m', '--minsize', type=int, default=3, help='Minimum abundance for UNOISE clustering (default: 3)')
     parser.add_argument('--keep-temp', action='store_true', help='Keep intermediate files')
 
     args = parser.parse_args()
