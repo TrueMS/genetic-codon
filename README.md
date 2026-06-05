@@ -27,7 +27,7 @@ cp 1.sickle/*fasta 2.fasta/
 python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3
 ```
 
-
+* Directory structure of the output-folder 3.outputchim/
 ```
 3.outputchim/
 ├── nonchimeras.SampleA.fa      # Sample A: denoised & chimera-filtered per-sample ASV sequences (main output)
