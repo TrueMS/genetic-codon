@@ -58,29 +58,39 @@ python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV
 
  * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
    
-`python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15`
+```
+python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15
+```
  
 ## Coding.py
 
   * Calculate character frequency at each position in aligned sequences
     
-`python /path/to/Coding.py -i dereplicated.mcr.pro.DRNA.mafft -o coding.stats`
+```
+python /path/to/Coding.py -i dereplicated.mcr.pro.DRNA.mafft -o coding.stats
+```
 
 ## stop_codon_usage.py
 
 * Calculate the usage frequency of each stop codon in the sequences
   
-`python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA`
+```
+python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
+```
 
 ## AlnView.py
 
 * Visualize the aligned sequences.
 
-`python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90`
+```
+python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
+```
 
 ## Pro2ASV2Seq.py
 
  * Translate DNA sequences to protein and count DNA variants for each protein
 
-`python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt`
+```
+python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt
+```
 
