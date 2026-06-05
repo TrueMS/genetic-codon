@@ -3,7 +3,7 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 # Usage examples
 
-## Perform quality control on the raw amplicons (single-end sequencing) and convert the FASTQ format to FASTA format.
+## 1 Perform quality control on the raw amplicons (single-end sequencing) and convert the FASTQ format to FASTA format.
 
   * Quality control
     
@@ -19,7 +19,9 @@ python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle
 cp 1.sickle/*fasta 2.fasta/
 ```
 
-## mcrASVtable.py 
+## Generate mcrA ASV table
+
+### 2.1 mcrASVtable.py 
 
 * Batch processing of fasta files for sequence dereplication and denoising, generating ASV table and unchim
 
@@ -46,7 +48,7 @@ python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 
     └── SampleB/...
  ```
 
-### translator.py
+### 2.2 translator.py
 
 * Translate the nucleotide sequences in ASV.seq.fa into protein sequences across all six reading frames
 
@@ -54,16 +56,33 @@ python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 
 python /path/to/translator.py -i ASV.seq.fa -o ASV.pro
 ```
 
-### Identity McrA amplicons from the six sets of translation products
+### 2.3 Identity McrA amplicons from the six sets of translation products
 
 ```
 # The overall goal of the subsequent steps is to screen mcrA sequences from the amplified ASV.seq.fa and compile them into ASV.mcr.seq.fa.
 # Specifically, all translated sequences are scanned against the KEGG K00399.hmm profile; hits with an E-value ≤ 100 are defined as McrA.
 
 /data/cailab/database.HQ/kofam/kofamscan/bin/kofam_scan-1.3.0/exec_annotation -o kofam.ASV.mcr.out -c /data/cailab/database.HQ/kofam/kofamscan/bin/config.mcrA.yml --cpu 15 -E 1e-5 ASV.pro
-python /data/cailab/script.sh/kofam.evalue.py -i kofam.ASV.mcr.out -e 1e-100 -n 1
+python /path/to/kofam.evalue.py -i kofam.ASV.mcr.out -e 1e-100 -n 1
 cut -f1 kofam.ASV.mcr_1e-100_top1.out | sed 's/_[^_]*$//' | sort -u > ASV.mcr.seqname
 seqkit grep -f ASV.mcr.seqname ASV.seq.fa > ASV.mcr.seq.fa
+```
+
+### 2.4 Generate an ASV table retaining only mcrA sequences
+
+```
+awk 'NR==FNR{if(/^>/){gsub(/^>/,"");ids[$0]=1}}NR!=FNR{if(FNR==1||$1 in ids)print}' ASV.mcr.seq.fa ASV.table.txt > ASV.mcr.table.txt
+```
+
+## 3 Extract mcrA sequences containing stop codons (*, one star)
+
+```
+cut -f1 kofam.ASV.mcr_1e-100_top1.out > ASV.pro.seqname
+seqkit grep -f ASV.pro.seqname ASV.pro > ASV.mcr.pro
+cp ASV.mcr.pro ASV.mcr.pro.forabun
+sed -i '/^>/s/_[^_]*$//' ASV.mcr.pro.forabun
+seqkit rmdup -s ASV.mcr.pro.forabun > dereplicated.ASV.mcr.pro.forabun
+seqkit rmdup -s ASV.mcr.pro.ostar > ASV.mcr.pro.ostar.dmp
 ```
 
 ## Protable.py
