@@ -74,16 +74,18 @@ seqkit grep -f ASV.mcr.seqname ASV.seq.fa > ASV.mcr.seq.fa
 awk 'NR==FNR{if(/^>/){gsub(/^>/,"");ids[$0]=1}}NR!=FNR{if(FNR==1||$1 in ids)print}' ASV.mcr.seq.fa ASV.table.txt > ASV.mcr.table.txt
 ```
 
-## 3 Extract mcrA sequences containing stop codons (*, one star)
+## 3 Extract mcrA sequences containing stop codons (*, star)
 
 ```
 cut -f1 kofam.ASV.mcr_1e-100_top1.out > ASV.pro.seqname
 seqkit grep -f ASV.pro.seqname ASV.pro > ASV.mcr.pro
-cp ASV.mcr.pro ASV.mcr.pro.forabun
-sed -i '/^>/s/_[^_]*$//' ASV.mcr.pro.forabun
-seqkit rmdup -s ASV.mcr.pro.forabun > dereplicated.ASV.mcr.pro.forabun
-seqkit rmdup -s ASV.mcr.pro.ostar > ASV.mcr.pro.ostar.dmp
 ```
+
+```
+awk 'BEGIN{seq="";header=""}$0~/^>/{if(length(seq)>0){if(seq~/\*/){print header>"mcr.pro.star.fa";print seq>"mcr.pro.star.fa"}else{print header>"mcr.pro.nostar.fa";print seq>"mcr.pro.nostar.fa"}}header=$0;seq="";next}{seq=seq$0}END{if(length(seq)>0){if(seq~/\*/){print header>"mcr.pro.star.fa";print seq>"mcr.pro.star.fa"}else{print header>"mcr.pro.nostar.fa";print seq>"mcr.pro.nostar.fa"}}}' ASV.mcr.pro
+# We observed multiple * residues within several McrA protein sequences. Further inspection revealed their amplicons carry a single-base deletion relative to canonical mcrA amplicons, which causes a frameshift and erroneous downstream translation. This phenomenon is not addressed in the present study.
+```
+
 
 ## Protable.py
 
