@@ -7,20 +7,26 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
   * Quality control
     
-```python /data/cailab/script.sh/batch_sickle.py -i 0.data```
+```
+python /data/cailab/script.sh/batch_sickle.py -i 0.data
+```
 
  * Coverting FastQ to Fasta
    
 ```
 mkdir 1.sickle && mv 0.data/*sickle 1.sickle
 python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle
-cp 1.sickle/*fasta 2.fasta/```
+cp 1.sickle/*fasta 2.fasta/
+```
 
 ## mcrASVtable.py 
 
 * Batch processing of fasta files for sequence dereplication and denoising, generating ASV table and unchim
 
-```python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3```
+```
+python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3
+```
+
 
 ```
 3.outputchim/
@@ -44,7 +50,9 @@ cp 1.sickle/*fasta 2.fasta/```
 
 * Merge identical protein sequences and sum their counts
   
-`python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt`
+```
+python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt
+```
 
 ## PCR.py 
 
