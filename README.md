@@ -23,6 +23,23 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 `python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 3`
 
+```
+3.outputchim/
+├── nonchimeras.SampleA.fa      # Sample A: denoised & chimera-filtered per-sample ASV sequences (main output)
+├── nonchimeras.SampleB.fa      # Sample B: same as above
+├── ASV.seq.fa                  # [Core Result 1] Consolidated representative FASTA of all ASVs across samples
+├── ASV.table.txt               # [Core Result 2] ASV-by-sample abundance matrix (tab-delimited, directly importable into R/QIIME2)
+├── chimera_detection_summary.txt # [Only generated with --keep-temp] Global chimera statistics summary across all samples
+└── temp/                       # [Only generated with --keep-temp] Intermediate working directory, separated by individual sample subfolders
+    ├── SampleA/
+    │   ├── dereplicated.SampleA.fa         # Raw dereplicated sequences
+    │   ├── dereplicated_with_sample.SampleA.fasta # Dereplicated sequences tagged with sample ID in FASTA headers
+    │   ├── unoise.alpha2.SampleA.fa        # UNOISE-denoised sequences prior to chimera removal
+    │   ├── chimaln.SampleA.txt             # UCHIME chimera alignment details
+    │   ├── chimeras.SampleA.fa             # Detected putative chimeric sequences
+    │   └── chiminfo.SampleA.txt            # Chimera scoring and parent-source trace information
+    └── SampleB/...
+ ```
 
 ## Protable.py
 
