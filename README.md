@@ -1,7 +1,7 @@
 # genetic-codon
 This project stores the scripts used in the article "A hidden layer of stop-codon recoding in the anaerobic methanotrophic archaeon"
 
-Please email heq22@mail.ustc.edu.cn for any questions about this projects.
+Please email heq22@mail.ustc.edu.cn for any questions about this project.
 
 # Usage examples
 
