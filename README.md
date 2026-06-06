@@ -123,8 +123,17 @@ python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG
   * Calculate character frequency at each position in aligned sequences
     
 ```
+# Position_number in the output file is the index within the aligned protein sequence
 # clade1.pro.mafft and clade2.pro.mafft are stored under the Coding directory of this project
 python /path/to/Coding.py -i clade1.pro.mafft -o clade1.coding.stats
+```
+
+* Predict the reassignment for stop codon
+
+```
+# Protein Position in the output file is the index within the unaligned protein sequence. So it may be small than Coding.py output
+# Ostar.nucl.fa and clade1.pro are stored under the Coding directory of this project
+python .\stop.codon.py -g .\Ostar.nucl.fa -p .\clade1.pro -pro .\clade1.pro.mafft -o reassignment.clade1.out
 ```
 
 ## 7. stop_codon_usage.py
