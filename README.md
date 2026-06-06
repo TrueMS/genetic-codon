@@ -140,6 +140,7 @@ python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
 * Visualize the aligned sequences.
 
 ```
+# Ostar.Pro.mafft is stored under the AlnView directory of this project
 python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
 ```
 
