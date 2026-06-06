@@ -118,7 +118,7 @@ python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG
 # KnownAndOstar.trimal is the trimmed alignment file and KnownAndOstar.trimal.treefile is the resulting tree file, both stored under the Fig.1 directory of this project.
 ```
  
-## 6. Coding.py
+## 6. Coding predictions
 
   * Calculate character frequency at each position in aligned sequences
     
