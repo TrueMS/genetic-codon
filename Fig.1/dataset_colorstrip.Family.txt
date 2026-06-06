@@ -1,0 +1,52 @@
+DATASET_COLORSTRIP
+SEPARATOR	TAB
+BORDER_WIDTH	0.5
+COLOR	#bebada
+DATASET_LABEL	Family
+LEGEND_LABELS	Methanosarcinaceae	Methanocomedenaceae	Methanoperedenaceae
+LEGEND_COLORS	#bec936	#fcc307	#9d5b8b
+LEGEND_SHAPES	1	1	1
+LEGEND_TITLE	Family
+MARGIN	50
+STRIP_WIDTH	100
+DATA
+DQIP01000227.1	#bec936	Methanosarcinaceae
+JAUPKV010000284.1	#bec936	Methanosarcinaceae
+JADGNM010000014.1	#bec936	Methanosarcinaceae
+JAHYIS010000002.1	#fcc307	Methanocomedenaceae
+JAMJFQ010000021.1	#fcc307	Methanocomedenaceae
+DAOWEE010000112.1	#fcc307	Methanocomedenaceae
+JACUTQ010000026.1	#fcc307	Methanocomedenaceae
+JAKRWB010000151.1	#fcc307	Methanocomedenaceae
+JAUWTY010000016.1	#fcc307	Methanocomedenaceae
+QBUQ01000138.1	#fcc307	Methanocomedenaceae
+PYCK01000154.1	#fcc307	Methanocomedenaceae
+DAOUWY010000027.1	#fcc307	Methanocomedenaceae
+JAUVLO010000074.1	#fcc307	Methanocomedenaceae
+JAAXOC010000069.1	#fcc307	Methanocomedenaceae
+JACUTP010000014.1	#9d5b8b	Methanoperedenaceae
+JAPMTZ010000055.1	#9d5b8b	Methanoperedenaceae
+PQAS01000057.1	#9d5b8b	Methanoperedenaceae
+JAPMTR010000087.1	#9d5b8b	Methanoperedenaceae
+JAGFNC010000003.1	#9d5b8b	Methanoperedenaceae
+JAPMTV010000077.1	#9d5b8b	Methanoperedenaceae
+CABMCA010000042.1	#9d5b8b	Methanoperedenaceae
+VEPM01000015.1	#9d5b8b	Methanoperedenaceae
+NSJO01000026.1	#9d5b8b	Methanoperedenaceae
+JAUSDC010000068.1	#9d5b8b	Methanoperedenaceae
+JAPZAS010000032.1	#9d5b8b	Methanoperedenaceae
+CABMCA010000037.1	#9d5b8b	Methanoperedenaceae
+JAPZAO010000004.1	#9d5b8b	Methanoperedenaceae
+JAHFDG010000012.1	#9d5b8b	Methanoperedenaceae
+QYPO01000102.1	#9d5b8b	Methanoperedenaceae
+JAPMTS010000001.1	#9d5b8b	Methanoperedenaceae
+JAKLQM010000401.1	#9d5b8b	Methanoperedenaceae
+VEPN01000001.1	#9d5b8b	Methanoperedenaceae
+JAPZAT010000039.1	#9d5b8b	Methanoperedenaceae
+JAPZAV010000010.1	#9d5b8b	Methanoperedenaceae
+JAPMTW010000186.1	#9d5b8b	Methanoperedenaceae
+JAPMTX010000200.1	#9d5b8b	Methanoperedenaceae
+JMIY01000002.1	#9d5b8b	Methanoperedenaceae
+DYGR01000023.1	#9d5b8b	Methanoperedenaceae
+FZMP01000185.1	#9d5b8b	Methanoperedenaceae
+CABMIB010000104.1	#9d5b8b	Methanoperedenaceae
