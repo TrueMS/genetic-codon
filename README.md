@@ -114,7 +114,8 @@ python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV
 # mcr.nucl.ref.fa contains mcrA genes retrived from public available genomes
 python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15
 
-# Sequences from mcr.nucl.amplicon.fa were translated and combined with stop-codon-containing McrA sequences identified in this study for phylogenetic tree construction. KnownAndOstar.trimal is the trimmed alignment file and KnownAndOstar.trimal.treefile is the resulting tree file, both stored under the Fig.1 directory of this project.
+# Sequences from mcr.nucl.amplicon.fa were translated and combined with stop-codon-containing McrA sequences identified in this study for phylogenetic tree construction.
+# KnownAndOstar.trimal is the trimmed alignment file and KnownAndOstar.trimal.treefile is the resulting tree file, both stored under the Fig.1 directory of this project.
 ```
  
 ## Coding.py
@@ -122,7 +123,8 @@ python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG
   * Calculate character frequency at each position in aligned sequences
     
 ```
-python /path/to/Coding.py -i dereplicated.mcr.pro.DRNA.mafft -o coding.stats
+# clade1.pro.mafft and clade2.pro.mafft are stored under the Coding directory of this project
+python /path/to/Coding.py -i clade1.pro.mafft -o clade1.coding.stats
 ```
 
 ## stop_codon_usage.py
