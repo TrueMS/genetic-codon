@@ -149,6 +149,7 @@ python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
  * Translate DNA sequences to protein and count DNA variants for each protein
 
 ```
+# ASV.mcr.pro.table.DNA.with_sequences.txt and DNAsamples.nonchimeras.fasta are stored under the CountVarinets directory of this project
 python /path/to/Pro2ASV2Seq.py -table ASV.mcr.pro.table.DNA.with_sequences.txt -seq DNAsamples.nonchimeras.fasta -o DNA.Pro.table.Seq.txt
 ```
 
