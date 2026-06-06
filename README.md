@@ -88,7 +88,7 @@ awk 'BEGIN{seq="";header=""}$0~/^>/{if(length(seq)>0){if(seq~/\*/){print header>
 
 # We observed multiple * residues within several McrA protein sequences.
 # Further inspection revealed their amplicons carry a single-base deletion relative to canonical mcrA amplicons, which causes a frameshift and erroneous downstream translation.
-# This phenomenon is not addressed in the present study.
+# This phenomenon of single-base deletion is not addressed in the present study.
 # We extract sequences with a single * from mcr.pro.star.fa to ASV.mcr.pro.ostar
 
 awk 'BEGIN{s="";h=""}$0~/^>/{if(length(s)>0){n=gsub(/\*/,"",s);if(n==1){print h>"ASV.mcr.pro.ostar";print s>"ASV.mcr.pro.ostar"}}h=$0;s="";next}{s=s$0}END{if(length(s)>0){n=gsub(/\*/,"",s);if(n==1){print h>"ASV.mcr.pro.ostar";print s>"ASV.mcr.pro.ostar"}}}' mcr.pro.star.fa
