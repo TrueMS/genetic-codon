@@ -3,7 +3,7 @@ This project stores the scripts used in the article "A hidden layer of stop-codo
 
 # Usage examples
 
-## 1 Perform quality control on the raw amplicons (single-end sequencing) and convert the FASTQ format to FASTA format.
+## 1. Perform quality control on the raw amplicons (single-end sequencing) and convert the FASTQ format to FASTA format.
 
   * Quality control
     
@@ -19,7 +19,7 @@ python /path/to/fq2fa.py -i 1.sickle -title -pfix .fq.sickle
 cp 1.sickle/*fasta 2.fasta/
 ```
 
-## Generate mcrA ASV table
+## 2. Generate mcrA ASV table
 
 ### 2.1 mcrASVtable.py 
 
@@ -74,7 +74,7 @@ seqkit grep -f ASV.mcr.seqname ASV.seq.fa > ASV.mcr.seq.fa
 awk 'NR==FNR{if(/^>/){gsub(/^>/,"");ids[$0]=1}}NR!=FNR{if(FNR==1||$1 in ids)print}' ASV.mcr.seq.fa ASV.table.txt > ASV.mcr.table.txt
 ```
 
-## 3 Extract McrA sequences containing stop codons (*, star)
+## 3. Extract McrA sequences containing stop codons (*, star)
 
 ```
 cut -f1 kofam.ASV.mcr_1e-100_top1.out > ASV.pro.seqname
@@ -95,9 +95,9 @@ seqkit rmdup -s ASV.mcr.pro.ostar > ASV.mcr.pro.ostar.dmp # Keep one representat
 ```
 
 
-## Protable.py
+## 4. Merge identical protein sequences and sum their counts
 
-* Merge identical protein sequences and sum their counts
+* Protable.py
   
 ```
 cp ASV.mcr.pro ASV.mcr.pro.forabun
