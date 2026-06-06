@@ -95,9 +95,9 @@ seqkit rmdup -s ASV.mcr.pro.ostar > ASV.mcr.pro.ostar.dmp # Keep one representat
 ```
 
 
-## 4. Merge identical protein sequences and sum their counts
+## 4. Protable.py
 
-* Protable.py
+* Merge identical protein sequences and sum their counts
   
 ```
 cp ASV.mcr.pro ASV.mcr.pro.forabun
@@ -106,7 +106,7 @@ seqkit rmdup -s ASV.mcr.pro.forabun > dereplicated.ASV.mcr.pro.forabun # Keep on
 python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt # The Protable.py can also rmdup
 ```
 
-## PCR.py 
+## 5. PCR.py 
 
  * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
    
@@ -118,7 +118,7 @@ python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG
 # KnownAndOstar.trimal is the trimmed alignment file and KnownAndOstar.trimal.treefile is the resulting tree file, both stored under the Fig.1 directory of this project.
 ```
  
-## Coding.py
+## 6. Coding.py
 
   * Calculate character frequency at each position in aligned sequences
     
@@ -127,7 +127,7 @@ python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG
 python /path/to/Coding.py -i clade1.pro.mafft -o clade1.coding.stats
 ```
 
-## stop_codon_usage.py
+## 7. stop_codon_usage.py
 
 * Calculate the usage frequency of each stop codon in the sequences
   
@@ -135,7 +135,7 @@ python /path/to/Coding.py -i clade1.pro.mafft -o clade1.coding.stats
 python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
 ```
 
-## AlnView.py
+## 8. AlnView.py
 
 * Visualize the aligned sequences.
 
@@ -144,7 +144,7 @@ python /path/to/stop_codon_usage.py -i mcrA -o stopcodon.ANME2dmcrA
 python /path/to/AlnView.py -i Ostar.Pro.mafft -diff -n 90
 ```
 
-## Pro2ASV2Seq.py
+## 9. Pro2ASV2Seq.py
 
  * Translate DNA sequences to protein and count DNA variants for each protein
 
