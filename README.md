@@ -74,7 +74,7 @@ seqkit grep -f ASV.mcr.seqname ASV.seq.fa > ASV.mcr.seq.fa
 awk 'NR==FNR{if(/^>/){gsub(/^>/,"");ids[$0]=1}}NR!=FNR{if(FNR==1||$1 in ids)print}' ASV.mcr.seq.fa ASV.table.txt > ASV.mcr.table.txt
 ```
 
-## 3 Extract mcrA sequences containing stop codons (*, star)
+## 3 Extract McrA sequences containing stop codons (*, star)
 
 ```
 cut -f1 kofam.ASV.mcr_1e-100_top1.out > ASV.pro.seqname
@@ -90,6 +90,8 @@ awk 'BEGIN{seq="";header=""}$0~/^>/{if(length(seq)>0){if(seq~/\*/){print header>
 # We extract sequences with a single * from mcr.pro.star.fa to ASV.mcr.pro.ostar
 
 awk 'BEGIN{s="";h=""}$0~/^>/{if(length(s)>0){n=gsub(/\*/,"",s);if(n==1){print h>"ASV.mcr.pro.ostar";print s>"ASV.mcr.pro.ostar"}}h=$0;s="";next}{s=s$0}END{if(length(s)>0){n=gsub(/\*/,"",s);if(n==1){print h>"ASV.mcr.pro.ostar";print s>"ASV.mcr.pro.ostar"}}}' mcr.pro.star.fa
+
+seqkit rmdup -s ASV.mcr.pro.ostar > ASV.mcr.pro.ostar.dmp # Keep one representative for identical protein sequences after degeneracy collapsing
 ```
 
 
@@ -98,7 +100,10 @@ awk 'BEGIN{s="";h=""}$0~/^>/{if(length(s)>0){n=gsub(/\*/,"",s);if(n==1){print h>
 * Merge identical protein sequences and sum their counts
   
 ```
-python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt
+cp ASV.mcr.pro ASV.mcr.pro.forabun
+sed -i '/^>/s/_[^_]*$//' ASV.mcr.pro.forabun
+seqkit rmdup -s ASV.mcr.pro.forabun > dereplicated.ASV.mcr.pro.forabun # Keep one representative for identical protein sequences after degeneracy collapsing
+python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV.mcr.pro.table.txt # The Protable.py can also rmdup
 ```
 
 ## PCR.py 
@@ -106,7 +111,10 @@ python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV
  * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
    
 ```
+# mcr.nucl.ref.fa contains mcrA genes retrived from public available genomes
 python /path/to/PCR.py mcr.nucl.ref.fa GGAACAGATATCGTRTGYGA AACTAYGCHATGAACGTAGG mcr.nucl.amplicon.fa pcr.process alignment_results --forward_mismatches 3 --reverse_mismatches 3 -n 15
+
+# Sequences from mcr.nucl.amplicon.fa were translated and combined with stop-codon-containing McrA sequences identified in this study for phylogenetic tree construction. KnownAndOstar.trimal is the trimmed alignment file and KnownAndOstar.trimal.treefile is the resulting tree file, both stored under the Fig.1 directory of this project.
 ```
  
 ## Coding.py
