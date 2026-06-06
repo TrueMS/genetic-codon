@@ -52,7 +52,7 @@ python /path/to/mcrASVtable.py -i 2.fasta/ -o 3.outputchim -t 20 --keep-temp -m 
 
 ### 2.2 translator.py
 
-* Translate the nucleotide sequences in ASV.seq.fa into protein sequences across all six reading frames
+* Translate the nucleotide sequences in `ASV.seq.fa` into protein sequences across all six reading frames
 
 ```
 python /path/to/translator.py -i ASV.seq.fa -o ASV.pro
@@ -110,7 +110,7 @@ python /path/to/Protable.py -pro ASV.mcr.pro.forabun -t ASV.mcr.table.txt -o ASV
 
 ## 5. PCR.py 
 
- * Extract the primer-flanked fragments from the mcr.nucl.ref.fa sequence to mcr.nucl.amplicon.fa
+ * Extract the primer-flanked fragments from the `mcr.nucl.ref.fa` sequence to `mcr.nucl.amplicon.fa`
    
 ```
 # mcr.nucl.ref.fa contains mcrA genes retrived from public available genomes
